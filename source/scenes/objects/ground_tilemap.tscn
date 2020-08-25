@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/tilemap/ground_tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/objects/scripts/ground_tilemap.gd" type="Script" id=2]
+[ext_resource path="res://scenes/objects/scripts/tilemap_draw_grid.gd" type="Script" id=3]
+
+[node name="TileMap" type="TileMap"]
+tile_set = ExtResource( 1 )
+cell_tile_origin = 1
+format = 1
+tile_data = PoolIntArray( 0, 1, 0, 1, 1, 1, 2, 1, 1, 3, 1, 1, 4, 1, 1, 5, 1, 2, 65536, 1, 65536, 65537, 1, 3, 65538, 1, 131073, 65539, 1, 131073, 65540, 1, 4, 65541, 1, 65538, 131072, 1, 65536, 131073, 1, 65538, 131076, 1, 65536, 131077, 1, 65538, 196608, 1, 65536, 196609, 1, 65538, 196612, 1, 65536, 196613, 1, 65538, 262144, 1, 65536, 262145, 1, 65539, 262146, 1, 1, 262147, 1, 1, 262148, 1, 65540, 262149, 1, 65538, 327680, 1, 131072, 327681, 1, 131073, 327682, 1, 131073, 327683, 1, 131073, 327684, 1, 131073, 327685, 1, 131074 )
+script = ExtResource( 2 )
+sectorScale = Vector2( 1, 2 )
+
+[node name="Grid" type="Node2D" parent="."]
+script = ExtResource( 3 )
+drawFrame = false
+gridColor = Color( 0.796078, 0.556863, 0.368627, 1 )
+width = 3.0
