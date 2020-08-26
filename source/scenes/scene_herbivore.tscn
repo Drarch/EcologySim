@@ -7,7 +7,7 @@
 
 [node name="TileMap" parent="." instance=ExtResource( 1 )]
 position = Vector2( 117.468, 91.2756 )
-sectorScale = Vector2( 1, 2 )
+sectorScale = Vector2( 2, 2 )
 
 [node name="Animal" parent="." instance=ExtResource( 2 )]
 visible = false

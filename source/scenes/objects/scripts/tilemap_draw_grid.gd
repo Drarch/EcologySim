@@ -1,6 +1,6 @@
 extends Node2D
 
-export(bool) var drawGrid: bool = true
+export(bool) var drawSectorGrid: bool = true
 export(bool) var drawFrame: bool = true
 
 export(Color) var gridColor: Color = Color.red
@@ -11,17 +11,16 @@ var tilemap: TileMap
 
 
 func _ready() -> void:
-	if tilemap && drawGrid:
-		_drawGrid()
+	pass
 
 func _draw() -> void:
-	if !drawGrid:
+	if !drawSectorGrid:
 		return
 
-	_drawGrid()
+	_drawSectorGrid()
 
 
-func _drawGrid() -> void:
+func _drawSectorGrid() -> void:
 	var tilemapSize: Vector2 = tilemap.get_used_rect().size
 	var sectorSize: Vector2 = tilemap.cell_size * tilemap.sectorScale
 	var gridSize: Vector2 = tilemapSize / tilemap.sectorScale
