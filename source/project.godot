@@ -9,19 +9,31 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "ActionBase",
+"language": "GDScript",
+"path": "res://scenes/agents/actions/scripts/action_base.gd"
+}, {
+"base": "Node2D",
+"class": "AnimalBase",
+"language": "GDScript",
+"path": "res://scenes/agents/scripts/animal_base.gd"
+}, {
 "base": "Reference",
 "class": "Sector",
 "language": "GDScript",
 "path": "res://scenes/objects/scripts/tilemap_sector.gd"
 } ]
 _global_script_class_icons={
+"ActionBase": "",
+"AnimalBase": "",
 "Sector": ""
 }
 
 [application]
 
 config/name="EcologySim"
-run/main_scene="res://scenes/scene_herbivore.tscn"
+run/main_scene="res://scenes/levels/scene_herbivore.tscn"
 config/icon="res://icon.png"
 
 [rendering]

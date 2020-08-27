@@ -1,6 +1,7 @@
 extends Node2D
 
 export(bool) var drawSectorGrid: bool = true
+export(bool) var drawTileGrid: bool = false
 export(bool) var drawFrame: bool = true
 
 export(Color) var gridColor: Color = Color.red
@@ -14,10 +15,13 @@ func _ready() -> void:
 	pass
 
 func _draw() -> void:
-	if !drawSectorGrid:
-		return
+	if drawSectorGrid:
+		_drawSectorGrid()
 
-	_drawSectorGrid()
+	if drawTileGrid:
+		_drawTileGrid()
+
+	
 
 
 func _drawSectorGrid() -> void:
@@ -39,3 +43,20 @@ func _drawSectorGrid() -> void:
 	for x in range(start, int(gridSize.x) + end):
 		var step:int = int(sectorSize.x) * x
 		draw_line(Vector2(step, 0), Vector2(step, mapSize.y), gridColor, width)
+
+
+func _drawTileGrid() -> void:
+	var tilemapSize: Vector2 = tilemap.get_used_rect().size
+
+	var mapSize: Vector2 = tilemap.cell_size * tilemapSize
+	
+	var start: int = 0 if drawFrame else 1
+	var end: int = 1 if drawFrame else 0
+
+	for y in range(start, tilemapSize.y + end):
+		var step:int = int(tilemap.cell_size .y) * y
+		draw_line(Vector2(0, step), Vector2(mapSize.x, step), gridColor, width/2.0)
+
+	for x in range(start, tilemapSize.x + end):
+		var step:int = int(tilemap.cell_size .x) * x
+		draw_line(Vector2(step, 0), Vector2(step, mapSize.y), gridColor, width/2.0)

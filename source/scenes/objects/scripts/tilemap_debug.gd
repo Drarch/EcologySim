@@ -6,8 +6,6 @@ func _ready() -> void:
 	pass
 
 func _redayLabels() -> void:
-	print("Addlabels")
-
 	for pS in tilemap.sectors:
 		for s in pS:
 			var label: Label = Label.new()
