@@ -9,16 +9,14 @@ var sectorSize: Vector2 = Vector2.ZERO
 
 func _ready():
 	_readySelfReference()
-
 	_readySectors()
 
-	$Debug._redayLabels()
-
+	_readyDebug()
 
 
 func _readySelfReference() -> void:
 	_grid.tilemap = self
-	$Debug.tilemap = self
+	
 
 func _readySectors():
 	var tilemapSize: Vector2 = self.get_used_rect().size
@@ -38,3 +36,7 @@ func _readySectors():
 			var sY: int = int(y / sectorScale.y)
 			sectors[sX][sY].tiles.append( Vector2(x, y) )
 
+
+func _readyDebug() -> void:
+	$Debug.tilemap = self
+	$Debug._redayLabels()

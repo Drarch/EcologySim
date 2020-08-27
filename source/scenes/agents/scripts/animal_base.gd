@@ -13,7 +13,7 @@ func _ready() -> void:
 	_readyActions()
 
 
-func _readyEmptyActions(actionName: string) -> void:
+func _readyEmptyActions(actionName: String) -> void:
 	_migration = funcref(self, actionName)
 	_consumption = funcref(self, actionName)
 	_death = funcref(self, actionName)
