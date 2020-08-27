@@ -10,6 +10,7 @@ var _breeding: FuncRef
 
 func _ready() -> void:
 	_readyNullAction()
+	_readyActions()
 
 
 func _readyNullAction() -> void:
@@ -23,8 +24,12 @@ func _readyActions() -> void:
 		a.activate(self)
 
 
-func _nullAction() -> void:
+func _actionNull() -> void:
 	pass
+
+func _actionDebug() -> void:
+	pass
+
 
 func migration():
 	_migration.call_func()
