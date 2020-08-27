@@ -7,5 +7,5 @@ func activate(animal: AnimalBase) -> void:
 	_animal = animal
 	pass
 
-func action():
+func action() -> void:
 	pass
