@@ -9,6 +9,7 @@ var _death: FuncRef
 var _breeding: FuncRef
 
 var tile: Vector2 
+var sector: Sector
 
 func _ready() -> void:
 	_readyEmptyActions("_actionDebug")

@@ -12,7 +12,15 @@ func _firstTurn() -> void:
 
 func processTurn() -> void:
 	migrate()
+	breeding()
 
+
+func breeding() -> void:
+	for a in _animals:
+		a.breeding()
+
+	_animals = $Animals.get_children()
+	print("Population: ", _animals.size())
 
 func migrate() -> void:
 	for s in GlobalsMap.sectors:
