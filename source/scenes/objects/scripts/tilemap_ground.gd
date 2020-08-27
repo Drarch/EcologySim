@@ -1,4 +1,5 @@
 extends TileMap
+class_name MapBase
 
 onready var _grid: Node2D = $Grid
 
@@ -11,10 +12,13 @@ func _ready():
 	_readySelfReference()
 	_readySectors()
 
+	GlobalsMap.readyUnnocupiedSectors()
+	
 	_readyDebug()
 
 
 func _readySelfReference() -> void:
+	GlobalsMap.map = self
 	_grid.tilemap = self
 	
 

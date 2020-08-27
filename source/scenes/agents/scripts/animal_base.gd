@@ -4,9 +4,11 @@ class_name AnimalBase
 onready var _actions = $Actions
 
 var _migration: FuncRef
-var _consumption: FuncRef
+var _feeding: FuncRef
 var _death: FuncRef
 var _breeding: FuncRef
+
+var tile: Vector2 
 
 func _ready() -> void:
 	_readyEmptyActions("_actionDebug")
@@ -15,7 +17,7 @@ func _ready() -> void:
 
 func _readyEmptyActions(actionName: String) -> void:
 	_migration = funcref(self, actionName)
-	_consumption = funcref(self, actionName)
+	_feeding = funcref(self, actionName)
 	_death = funcref(self, actionName)
 	_breeding = funcref(self, actionName)
 
@@ -35,8 +37,8 @@ func _actionDebug() -> void:
 func migration():
 	_migration.call_func()
 	
-func consumption():
-	_consumption.call_func()
+func feeding():
+	_feeding.call_func()
 	
 func death():
 	_death.call_func()

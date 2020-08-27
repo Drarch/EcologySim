@@ -9,11 +9,36 @@ script = ExtResource( 3 )
 
 [node name="TileMap" parent="." instance=ExtResource( 1 )]
 position = Vector2( 117.468, 91.2756 )
+centered_textures = false
 sectorScale = Vector2( 2, 2 )
 
 [node name="Animals" type="Node" parent="."]
 
 [node name="Animal" parent="Animals" instance=ExtResource( 2 )]
+position = Vector2( 206.708, 188.775 )
+
+[node name="Animal2" parent="Animals" instance=ExtResource( 2 )]
+position = Vector2( 206.708, 188.775 )
+
+[node name="Animal3" parent="Animals" instance=ExtResource( 2 )]
+position = Vector2( 206.708, 188.775 )
+
+[node name="Animal4" parent="Animals" instance=ExtResource( 2 )]
+position = Vector2( 206.708, 188.775 )
+
+[node name="Animal5" parent="Animals" instance=ExtResource( 2 )]
+position = Vector2( 206.708, 188.775 )
+
+[node name="Animal6" parent="Animals" instance=ExtResource( 2 )]
+position = Vector2( 206.708, 188.775 )
+
+[node name="Animal7" parent="Animals" instance=ExtResource( 2 )]
+position = Vector2( 206.708, 188.775 )
+
+[node name="Animal8" parent="Animals" instance=ExtResource( 2 )]
+position = Vector2( 206.708, 188.775 )
+
+[node name="Animal9" parent="Animals" instance=ExtResource( 2 )]
 position = Vector2( 206.708, 188.775 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
