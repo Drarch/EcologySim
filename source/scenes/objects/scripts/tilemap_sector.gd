@@ -43,7 +43,7 @@ func addAnimal(animal: Node2D) -> bool:
 	_moveAnimal(animal, tile)
 
 	if !hasFreeTile():
-		GlobalsMap.unnocupiedSectors.erase(self)
+		GlobalsMap.unocupiedSectors.erase(self)
 		GlobalsMap.ocupiedSectors.append(self)
 
 	return true
@@ -53,7 +53,7 @@ func removeAnimal(tile: Vector2) -> void:
 		return
 
 	if !hasFreeTile():
-		GlobalsMap.unnocupiedSectors.append(self)
+		GlobalsMap.unocupiedSectors.append(self)
 		GlobalsMap.ocupiedSectors.erase(self)
 	
 	animals[tile].tile = GlobalsMap.WRONG_VECTOR
@@ -62,8 +62,8 @@ func removeAnimal(tile: Vector2) -> void:
 
 
 func resetTiles() -> void:
-	if !hasFreeTile():
-		GlobalsMap.unnocupiedSectors.append(self)
+	if !hasFreeTile(): #Because otherwise this sector is unocupied befoer reste.
+		GlobalsMap.unocupiedSectors.append(self)
 		GlobalsMap.ocupiedSectors.erase(self)
 		
 	animals.clear()

@@ -12,7 +12,7 @@ func _ready():
 	_readySelfReference()
 	_readySectors()
 
-	GlobalsMap.readyUnnocupiedSectors()
+	GlobalsMap.readyunocupiedSectors()
 	
 	_readyDebug()
 

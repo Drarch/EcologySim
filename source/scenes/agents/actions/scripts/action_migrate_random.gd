@@ -9,10 +9,10 @@ func activate(animal: AnimalBase) -> void:
 	
 
 func action() -> void:
-	if GlobalsMap.unnocupiedSectors.empty():
+	if GlobalsMap.unocupiedSectors.empty():
 		return
 	
-	var sectors := GlobalsMap.unnocupiedSectors
+	var sectors := GlobalsMap.unocupiedSectors
 	var destSector: Sector = sectors[randi() % sectors.size()] as Sector
 
 	destSector.addAnimal(_animal)

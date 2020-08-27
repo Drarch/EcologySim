@@ -5,27 +5,27 @@ const WRONG_VECTOR: Vector2 = Vector2(-1, -1)
 var map: MapBase
 
 var sectors: Array = []
-var unnocupiedSectors: Array = []
+var unocupiedSectors: Array = []
 var ocupiedSectors: Array = []
 
 
 func _ready() -> void:
 	pass
 
-func readyUnnocupiedSectors() -> void:
+func readyunocupiedSectors() -> void:
 	for sA in map.sectors:
 		for s in sA:
 			sectors.append(s)
-			unnocupiedSectors.append(s)
+			unocupiedSectors.append(s)
 
 
 func updateSectors():
-	unnocupiedSectors.clear()
+	unocupiedSectors.clear()
 	ocupiedSectors.clear()
 
 	for s in sectors:
 		if s.hasFreeTile():
-			unnocupiedSectors.append(s)
+			unocupiedSectors.append(s)
 		else:
 			ocupiedSectors.append(s)
 
