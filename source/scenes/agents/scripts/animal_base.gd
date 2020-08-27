@@ -14,10 +14,10 @@ func _ready() -> void:
 
 
 func _readyNullAction() -> void:
-	_migration = funcref(self, "_nullAction")
-	_consumption = funcref(self, "_nullAction")
-	_death = funcref(self, "_nullAction")
-	_breeding = funcref(self, "_nullAction")
+	_migration = funcref(self, "_actionDebug")
+	_consumption = funcref(self, "_actionDebug")
+	_death = funcref(self, "_actionDebug")
+	_breeding = funcref(self, "_actionDebug")
 
 func _readyActions() -> void:
 	for a in _actions.get_children():
@@ -28,7 +28,7 @@ func _actionNull() -> void:
 	pass
 
 func _actionDebug() -> void:
-	pass
+	print(self.name, ": function not set")
 
 
 func migration():
