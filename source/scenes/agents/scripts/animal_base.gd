@@ -9,15 +9,16 @@ var _death: FuncRef
 var _breeding: FuncRef
 
 func _ready() -> void:
-	_readyNullAction()
+	_readyEmptyActions("_actionDebug")
 	_readyActions()
 
 
-func _readyNullAction() -> void:
-	_migration = funcref(self, "_actionDebug")
-	_consumption = funcref(self, "_actionDebug")
-	_death = funcref(self, "_actionDebug")
-	_breeding = funcref(self, "_actionDebug")
+func _readyEmptyActions(actionName: string) -> void:
+	_migration = funcref(self, actionName)
+	_consumption = funcref(self, actionName)
+	_death = funcref(self, actionName)
+	_breeding = funcref(self, actionName)
+
 
 func _readyActions() -> void:
 	for a in _actions.get_children():
