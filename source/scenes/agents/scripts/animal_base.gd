@@ -15,7 +15,7 @@ var sector: Sector
 export(String) var specieName : String = "Speciement" 
 
 export(int, 1, 20, 1) var maxAge:int = 3
-var age: int = 1
+var age: int = 0
 
 
 func _ready() -> void:

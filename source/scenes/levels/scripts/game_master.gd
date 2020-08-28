@@ -15,6 +15,8 @@ func processTurn() -> void:
 	migrate()
 	breeding()
 
+	statistics()
+
 
 func aging() -> void:
 	for a in _animals.get_children():
@@ -24,11 +26,13 @@ func breeding() -> void:
 	for a in _animals.get_children():
 		a.breeding()
 
-	print("Population: ", _animals.get_children().size())
-
 func migrate() -> void:
 	for s in GlobalsMap.sectors:
 		s.resetTiles()
 
 	for a in _animals.get_children():
 		a.migration()
+
+
+func statistics():
+	print("Population: ", _animals.get_children().size())
