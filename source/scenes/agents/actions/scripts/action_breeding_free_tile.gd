@@ -21,5 +21,5 @@ func action() -> void:
 	_animal.get_parent().add_child(newAnimal)
 	_animal.sector.addAnimal(destTile, newAnimal)
 
-	_animal.energy -= energyBreedingCost
+	_animal.energy -= _animal.energyBreedingCost
 

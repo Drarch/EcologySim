@@ -32,12 +32,17 @@ __meta__ = {
 }
 
 [node name="plot" parent="CanvasLayer" instance=ExtResource( 4 )]
-position = Vector2( 10.8875, 586 )
+position = Vector2( 809.918, 110.824 )
+scale = Vector2( 1, 2 )
 data_path = NodePath("../../Animals")
 history_size = 200
-plot_size = Vector2( 200, 100 )
+scale_data = false
+record_only_on_change = true
+plot_size = Vector2( 200, 50 )
 axis_line_width = 2
+axis_line_color = Color( 1, 1, 1, 1 )
 grid_divisions = Vector2( 10, 5 )
+grid_width = 1
 grid_color = Color( 1, 1, 1, 0.286275 )
 plot_line_width = 2
 plot_line_color = Color( 0.968627, 1, 0, 1 )

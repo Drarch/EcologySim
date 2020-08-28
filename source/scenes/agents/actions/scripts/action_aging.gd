@@ -13,5 +13,5 @@ func action() -> void:
 		_animal.death()
 		return
 
-	_animal.emergy -= _animal.energyLivingCost
+	_animal.energy -= _animal.energyLivingCost
 	_animal.age += 1
