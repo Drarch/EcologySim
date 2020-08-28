@@ -17,6 +17,7 @@ export(String) var specieName : String = "Speciement"
 export(int, 1, 20, 1) var maxAge:int = 3
 var age: int = 0
 
+export(int, 0, 10000) var energy: int = 0
 
 func _ready() -> void:
 	_readyEmptyActions("_actionDebug")

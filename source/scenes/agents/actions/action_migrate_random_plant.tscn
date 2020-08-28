@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/agents/actions/scripts/action_migrate_random_plant.gd" type="Script" id=1]
+
+[node name="MigrationRandomPlant" type="Node"]
+script = ExtResource( 1 )
