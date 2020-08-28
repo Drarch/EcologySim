@@ -5,11 +5,18 @@ onready var _actions = $Actions
 
 var _migration: FuncRef
 var _feeding: FuncRef
-var _death: FuncRef
+var _aging: FuncRef
 var _breeding: FuncRef
 
 var tile: Vector2 
 var sector: Sector
+
+
+export(String) var specieName : String = "Speciement" 
+
+export(int, 1, 20, 1) var maxAge:int = 3
+var age: int = 1
+
 
 func _ready() -> void:
 	_readyEmptyActions("_actionDebug")
@@ -19,7 +26,7 @@ func _ready() -> void:
 func _readyEmptyActions(actionName: String) -> void:
 	_migration = funcref(self, actionName)
 	_feeding = funcref(self, actionName)
-	_death = funcref(self, actionName)
+	_aging = funcref(self, actionName)
 	_breeding = funcref(self, actionName)
 
 
@@ -41,8 +48,13 @@ func migration():
 func feeding():
 	_feeding.call_func()
 	
-func death():
-	_death.call_func()
+func aging():
+	_aging.call_func()
 	
 func breeding():
 	_breeding.call_func()
+
+
+func death():
+	self.sector.removeAnimal(self.tile)
+	self.queue_free()
