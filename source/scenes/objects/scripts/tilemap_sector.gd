@@ -36,6 +36,7 @@ func addAnimal(animal: Node2D) -> bool:
 
 	var tile: Tile = self.getFreeTile()
 
+	tile.animal = animal
 	animals[tile] = animal
 	animal.tile = tile
 	animal.sector = self
@@ -56,6 +57,7 @@ func removeAnimal(tile: Tile) -> void:
 		GlobalsMap.unocupiedSectors.append(self)
 		GlobalsMap.ocupiedSectors.erase(self)
 	
+	animals[tile].tile.animal = null
 	animals[tile].tile = null
 	animals[tile].sector = null
 	animals.erase(tile)
