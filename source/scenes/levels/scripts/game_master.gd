@@ -13,6 +13,7 @@ func _firstTurn() -> void:
 func processTurn() -> void:
 	aging()
 	migrate()
+	feeding()
 	breeding()
 
 	statistics()
@@ -25,6 +26,10 @@ func aging() -> void:
 func breeding() -> void:
 	for a in _animals.get_children():
 		a.breeding()
+
+func feeding() -> void:
+	for a in _animals.get_children():
+		a.feeding()
 
 func migrate() -> void:
 	for s in GlobalsMap.sectors:

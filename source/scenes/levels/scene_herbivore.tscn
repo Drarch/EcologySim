@@ -15,8 +15,6 @@ sectorScale = Vector2( 1, 2 )
 [node name="Animals" type="Node" parent="."]
 
 [node name="Herbivore" parent="Animals" instance=ExtResource( 2 )]
-specieName = null
-maxAge = null
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

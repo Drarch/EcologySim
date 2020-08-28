@@ -22,19 +22,30 @@ func getFreeTile() -> Tile:
 	var i: int = 0
 	var result: Tile = tiles[i]
 
-	while animals.has(result):
+	while result.animal:
 		i += 1
 		result = tiles[i]
 
 	return result
 
+func getFreePlantTile() -> Tile:
+	if !hasFreeTile():
+		return null
+
+	var result:Tile = getFreeTile()
+
+	for t in tiles:
+		if !t.animal && t.plants > 0:
+			result = t
+			break
+
+	return result 
+
 
 # Adds animal to sector and move it to designated tile
-func addAnimal(animal: Node2D) -> bool:
-	if !animal || !hasFreeTile():
+func addAnimal(tile: Tile, animal: Node2D) -> bool:
+	if !animal || tile.animal:
 		return false
-
-	var tile: Tile = self.getFreeTile()
 
 	tile.animal = animal
 	animals[tile] = animal
@@ -64,10 +75,13 @@ func removeAnimal(tile: Tile) -> void:
 
 
 func resetTiles() -> void:
-	if !hasFreeTile(): #Because otherwise this sector is unocupied befoer reste.
+	if !hasFreeTile(): #Because otherwise this sector is unocupied befoer reset.
 		GlobalsMap.unocupiedSectors.append(self)
 		GlobalsMap.ocupiedSectors.erase(self)
-		
+	
+	for t in tiles:
+		t.animal = null
+
 	animals.clear()
 
 

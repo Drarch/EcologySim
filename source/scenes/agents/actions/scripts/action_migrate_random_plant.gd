@@ -14,6 +14,6 @@ func action() -> void:
 	
 	var sectors := GlobalsMap.unocupiedSectors
 	var destSector: Sector = sectors[randi() % sectors.size()] as Sector
-	var destTile: Tile = destSector.getFreeTile()
+	var destTile: Tile = destSector.getFreePlantTile()
 
 	destSector.addAnimal(destTile, _animal)

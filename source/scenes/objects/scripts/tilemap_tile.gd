@@ -1,15 +1,18 @@
 extends Reference
 class_name Tile
 
-enum TileView { GRASS = 0, NO_GRASS = 1}
+enum TileView { GRASS = 1, NO_GRASS = 2}
 
 
 var _map: TileMap
 
 var position: Vector2
+
+var maxPlants: int = 10
+var plants: int = 10
+
 var animal: Node2D
-var maxPlants: int = 1
-var plants: int = 1
+
 
 func _init(map: TileMap, _position: Vector2, var _maxPlants: int = 1):
 	_map = map
@@ -19,19 +22,18 @@ func _init(map: TileMap, _position: Vector2, var _maxPlants: int = 1):
 	_updateView()
 
 
-func regrow(amount: int):
+func regrow(amount: int = 10):
 	plants = plants + amount
 	plants = int( min(plants, maxPlants) )
 	_updateView()
 
-func eat(amount: int = 1) -> bool:
-	if plants >= amount:
-		plants -= amount
+func eat(amount: int = 10) -> int:
+	var eated: int = int( min(plants, amount) )
+	plants -= eated
 
-		_updateView()
-		return true
+	_updateView()
 
-	return false
+	return eated
 
 
 func _updateView():

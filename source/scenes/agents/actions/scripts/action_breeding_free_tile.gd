@@ -9,9 +9,11 @@ func activate(animal: AnimalBase) -> void:
 	
 
 func action() -> void:
-	if !_animal.sector.hasFreeTile():
+	var destTile: Tile = _animal.sector.getFreeTile()
+
+	if !destTile:
 		return
 	
 	var newAnimal = _animal.duplicate()
 	_animal.get_parent().add_child(newAnimal)
-	_animal.sector.addAnimal(newAnimal)
+	_animal.sector.addAnimal(destTile, newAnimal)
