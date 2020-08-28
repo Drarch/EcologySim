@@ -14,6 +14,12 @@ func action() -> void:
 	if !destTile:
 		return
 	
+	if _animal.energy < _animal.energyBreedingCost:
+		return
+	
 	var newAnimal = _animal.duplicate()
 	_animal.get_parent().add_child(newAnimal)
 	_animal.sector.addAnimal(destTile, newAnimal)
+
+	_animal.energy -= energyBreedingCost
+

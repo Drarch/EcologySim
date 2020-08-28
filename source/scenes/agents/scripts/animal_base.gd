@@ -19,6 +19,10 @@ var age: int = 0
 
 export(int, 0, 10000) var energy: int = 0
 
+export(int, 0, 10000) var energyBreedingCost: int = 10
+export(int, 0, 10000) var energyFeedingGain: int = 10
+export(int, 0, 10000) var energyLivingCost: int = 0
+
 func _ready() -> void:
 	_readyEmptyActions("_actionDebug")
 	_readyActions()
@@ -55,6 +59,8 @@ func aging():
 func breeding():
 	_breeding.call_func()
 
+
+# func check
 
 func death():
 	self.sector.removeAnimal(self.tile)
