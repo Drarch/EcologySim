@@ -3,6 +3,7 @@ class_name MapBase
 
 onready var _grid: Node2D = $Grid
 
+export(int, 0, 10000, 1) var tileMaxPlants: int = 10
 export(Vector2) var sectorScale = Vector2.ONE
 
 var tiles: Dictionary = {}
@@ -29,7 +30,7 @@ func _readyTiles() -> void:
 	# Init tiles
 	for y in range(tilemapSize.y):
 		for x in range(tilemapSize.x):
-			tiles[Vector2(x,y)] = Tile.new( self, Vector2(x,y) )
+			tiles[Vector2(x,y)] = Tile.new( self, Vector2(x,y), tileMaxPlants )
 
 func _readySectors() -> void:
 	var tilemapSize: Vector2 = self.get_used_rect().size

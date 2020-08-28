@@ -3,6 +3,8 @@ extends Node
 onready var _animals: Node = $Animals
 var turn: int = 1
 
+export(int, 0, 10000, 1) var plantsRegrowRate: int = 10
+
 func _ready() -> void:
 	_zeroTurn()
 
@@ -23,7 +25,7 @@ func processTurn() -> void:
 
 func regrow() -> void:
 	for t in GlobalsMap.map.tiles.values():
-		t.regrow()
+		t.regrow(plantsRegrowRate)
 
 func aging() -> void:
 	for a in _animals.get_children():
