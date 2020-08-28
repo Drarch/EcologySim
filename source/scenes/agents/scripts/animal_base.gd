@@ -60,7 +60,19 @@ func breeding():
 	_breeding.call_func()
 
 
-# func check
+func move(tilePosition: Vector2) -> void:
+	var dest = GlobalsMap.map_to_world(tilePosition)
+	self.position = dest + GlobalsMap.map.position + Vector2.ONE * 32
+
+func reproduce(destTile: Tile) -> AnimalBase:
+	var newAnimal = self.duplicate()
+	self.get_parent().add_child(newAnimal)
+	self.sector.addAnimal(destTile, newAnimal)
+	
+	newAnimal.move(destTile.position)
+	newAnimal.energy = energyLivingCost
+
+	return newAnimal
 
 func death():
 	self.sector.removeAnimal(self.tile)

@@ -1,16 +1,17 @@
 extends Node
 
 onready var _animals: Node = $Animals
-
+var turn: int = 1
 
 func _ready() -> void:
-	_firstTurn()
+	_zeroTurn()
 
 
-func _firstTurn() -> void:
+func _zeroTurn() -> void:
 	migrate()
 
 func processTurn() -> void:
+	regrow()
 	aging()
 	migrate()
 	feeding()
@@ -18,6 +19,11 @@ func processTurn() -> void:
 
 	statistics()
 
+	turn += 1
+
+func regrow() -> void:
+	for t in GlobalsMap.map.tiles.values():
+		t.regrow()
 
 func aging() -> void:
 	for a in _animals.get_children():

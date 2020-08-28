@@ -12,14 +12,14 @@ func action() -> void:
 	var destTile: Tile = _animal.sector.getFreeTile()
 
 	if !destTile:
+		# print("No free tile")
 		return
 	
 	if _animal.energy < _animal.energyBreedingCost:
+		# print("Missing energy: ", _animal.energy)
 		return
 	
-	var newAnimal = _animal.duplicate()
-	_animal.get_parent().add_child(newAnimal)
-	_animal.sector.addAnimal(destTile, newAnimal)
+	_animal.reproduce(destTile)
 
 	_animal.energy -= _animal.energyBreedingCost
 

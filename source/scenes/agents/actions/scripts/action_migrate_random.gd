@@ -17,3 +17,4 @@ func action() -> void:
 	var destTile: Tile = destSector.getFreeTile()
 
 	destSector.addAnimal(destTile, _animal)
+	_animal.move(destTile.position)

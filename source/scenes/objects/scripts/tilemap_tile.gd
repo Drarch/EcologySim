@@ -8,13 +8,13 @@ var _map: TileMap
 
 var position: Vector2
 
-var maxPlants: int = 10
+var maxPlants: int
 var plants: int = 10
 
 var animal: Node2D
 
 
-func _init(map: TileMap, _position: Vector2, var _maxPlants: int = 1):
+func _init(map: TileMap, _position: Vector2, var _maxPlants: int = 10):
 	_map = map
 	position = _position
 	maxPlants = _maxPlants

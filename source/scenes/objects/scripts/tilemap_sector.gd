@@ -52,7 +52,7 @@ func addAnimal(tile: Tile, animal: Node2D) -> bool:
 	animal.tile = tile
 	animal.sector = self
 
-	_moveAnimal(animal, tile.position)
+	# _moveAnimal(animal, tile.position)
 
 	if !hasFreeTile():
 		GlobalsMap.unocupiedSectors.erase(self)
