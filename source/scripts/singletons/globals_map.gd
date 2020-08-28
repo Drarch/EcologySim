@@ -1,7 +1,5 @@
 extends Node
 
-const WRONG_VECTOR: Vector2 = Vector2(-1, -1)
-
 var map: MapBase
 
 var sectors: Array = []
@@ -12,9 +10,8 @@ var ocupiedSectors: Array = []
 func _ready() -> void:
 	pass
 
-func readyunocupiedSectors() -> void:
-	for sA in map.sectors:
-		for s in sA:
+func readyUnocupiedSectors() -> void:
+	for s in map.sectors.values():
 			sectors.append(s)
 			unocupiedSectors.append(s)
 

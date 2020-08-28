@@ -28,12 +28,18 @@ _global_script_classes=[ {
 "class": "Sector",
 "language": "GDScript",
 "path": "res://scenes/objects/scripts/tilemap_sector.gd"
+}, {
+"base": "Reference",
+"class": "Tile",
+"language": "GDScript",
+"path": "res://scenes/objects/scripts/tilemap_tile.gd"
 } ]
 _global_script_class_icons={
 "ActionBase": "",
 "AnimalBase": "",
 "MapBase": "",
-"Sector": ""
+"Sector": "",
+"Tile": ""
 }
 
 [application]

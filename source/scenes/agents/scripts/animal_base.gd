@@ -8,7 +8,7 @@ var _feeding: FuncRef
 var _aging: FuncRef
 var _breeding: FuncRef
 
-var tile: Vector2 
+var tile: Tile 
 var sector: Sector
 
 

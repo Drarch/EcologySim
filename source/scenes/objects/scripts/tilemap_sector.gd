@@ -5,7 +5,7 @@ var position: Vector2
 var tiles: Array = []
 
 var animals: Dictionary
-# var animalsOccupied: int = 0
+
 
 func _init(_position: Vector2):
 	position = _position
@@ -15,12 +15,12 @@ func hasFreeTile() -> bool:
 	return animals.size() < tiles.size()
 
 
-func getFreeTile() -> Vector2:
+func getFreeTile() -> Tile:
 	if !hasFreeTile():
-		return GlobalsMap.WRONG_VECTOR
+		return null
 
 	var i: int = 0
-	var result: Vector2 = tiles[i]
+	var result: Tile = tiles[i]
 
 	while animals.has(result):
 		i += 1
@@ -34,13 +34,13 @@ func addAnimal(animal: Node2D) -> bool:
 	if !animal || !hasFreeTile():
 		return false
 
-	var tile: Vector2 = self.getFreeTile()
+	var tile: Tile = self.getFreeTile()
 
 	animals[tile] = animal
 	animal.tile = tile
 	animal.sector = self
 
-	_moveAnimal(animal, tile)
+	_moveAnimal(animal, tile.position)
 
 	if !hasFreeTile():
 		GlobalsMap.unocupiedSectors.erase(self)
@@ -48,7 +48,7 @@ func addAnimal(animal: Node2D) -> bool:
 
 	return true
 
-func removeAnimal(tile: Vector2) -> void:
+func removeAnimal(tile: Tile) -> void:
 	if !animals.has(tile):
 		return
 
@@ -56,7 +56,7 @@ func removeAnimal(tile: Vector2) -> void:
 		GlobalsMap.unocupiedSectors.append(self)
 		GlobalsMap.ocupiedSectors.erase(self)
 	
-	animals[tile].tile = GlobalsMap.WRONG_VECTOR
+	animals[tile].tile = null
 	animals[tile].sector = null
 	animals.erase(tile)
 
@@ -70,6 +70,6 @@ func resetTiles() -> void:
 
 
 
-func _moveAnimal(animal: Node2D, tile: Vector2) -> void:
-	var dest = GlobalsMap.map_to_world(tile)
+func _moveAnimal(animal: Node2D, tilePosition: Vector2) -> void:
+	var dest = GlobalsMap.map_to_world(tilePosition)
 	animal.position = dest + GlobalsMap.map.position + Vector2.ONE * 32
