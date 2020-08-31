@@ -74,7 +74,7 @@ func removeAnimal(tile: Tile) -> void:
 	animals.erase(tile)
 
 
-func resetTiles() -> void:
+func removeAnimals() -> void:
 	if !hasFreeTile(): #Because otherwise this sector is unocupied befoer reset.
 		GlobalsMap.unocupiedSectors.append(self)
 		GlobalsMap.ocupiedSectors.erase(self)
