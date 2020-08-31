@@ -1,5 +1,7 @@
 extends Node
 
+onready var _plot: Node2D = $CanvasLayer/plot
+
 onready var _animals: Node = $Animals
 var turn: int = 1
 
@@ -22,6 +24,7 @@ func processTurn() -> void:
 	statistics()
 
 	turn += 1
+	_plot.force_update_data()
 
 func regrow() -> void:
 	for t in GlobalsMap.map.tiles.values():

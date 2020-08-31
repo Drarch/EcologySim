@@ -9,4 +9,4 @@ func activate(animal: AnimalBase) -> void:
 	
 
 func action() -> void:
-	_animal.energy = _animal.tile.eat(_animal.energyFeedingGain)
+	_animal.energy += _animal.tile.eat(_animal.energyFeedingGain)

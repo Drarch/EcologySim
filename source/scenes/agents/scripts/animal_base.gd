@@ -14,7 +14,7 @@ var sector: Sector
 
 export(String) var specieName : String = "Speciement" 
 
-export(int, 1, 20, 1) var maxAge:int = 3
+export(int, 1, 2000, 1) var maxAge:int = 3
 var age: int = 0
 
 export(int, 0, 10000) var energy: int = 0

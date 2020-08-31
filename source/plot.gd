@@ -44,6 +44,11 @@ func _process(delta):
 			update_max_value()
 			update_data()
 
+func force_update_data():
+	value_previous = value_current
+	update_max_value()
+	update_data()
+
 func update_max_value():
 	if value_current > value_max:
 		value_max = value_current

@@ -7,6 +7,8 @@
 [ext_resource path="res://scenes/agents/actions/action_feeding_plants.tscn" type="PackedScene" id=5]
 
 [node name="Herbivore" instance=ExtResource( 1 )]
+maxAge = 30
+energyFeedingGain = 1
 
 [node name="MigrationRandomPlant" parent="Actions" index="0" instance=ExtResource( 2 )]
 
