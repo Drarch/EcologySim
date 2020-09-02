@@ -20,7 +20,9 @@ script = ExtResource( 5 )
 [node name="Species" type="Node" parent="."]
 
 [node name="Herbivore" parent="Species" instance=ExtResource( 6 )]
+animalsPath = NodePath("../../Animals")
 sectorScale = Vector2( 1, 2 )
+gridColor = Color( 0.796078, 0.556863, 0.368627, 1 )
 
 [node name="Animal" parent="Species/Herbivore" instance=ExtResource( 2 )]
 visible = false

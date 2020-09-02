@@ -2,33 +2,33 @@ extends Node
 
 var map: MapBase
 
-var sectors: Array = []
-var unocupiedSectors: Array = []
-var ocupiedSectors: Array = []
+var tiles: Array = []
+var unocupiedTiles: Array = []
+var ocupiedTiles: Array = []
 
 
 func _ready() -> void:
 	pass
 
-func readyUnocupiedSectors() -> void:
+func readyUnocupiedTiles() -> void:
 	return
 
-	for s in map.sectors.values():
-			sectors.append(s)
-			unocupiedSectors.append(s)
+	for t in map.tiles.values():
+		tiles.append(t)
+		unocupiedTiles.append(t)
 
 
-func updateSectors():
+func updateTiles():
 	return
 
-	unocupiedSectors.clear()
-	ocupiedSectors.clear()
+	unocupiedTiles.clear()
+	ocupiedTiles.clear()
 
-	for s in sectors:
-		if s.hasFreeTile():
-			unocupiedSectors.append(s)
+	for t in tiles:
+		if t.isEmpty():
+			unocupiedTiles.append(t)
 		else:
-			ocupiedSectors.append(s)
+			ocupiedTiles.append(t)
 
 
 

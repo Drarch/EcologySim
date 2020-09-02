@@ -11,8 +11,8 @@ var _breeding: FuncRef
 var tile: Tile 
 var sector: Sector
 
-
 export(String) var specieName : String = "Speciement" 
+var species: SpeciesBase
 
 export(int, 1, 2000, 1) var maxAge:int = 3
 var age: int = 0
@@ -64,14 +64,20 @@ func move(tilePosition: Vector2) -> void:
 	var dest = GlobalsMap.map_to_world(tilePosition)
 	self.position = dest + GlobalsMap.map.position + Vector2.ONE * 32
 
-func reproduce(destTile: Tile) -> AnimalBase:
+
+func createAnimal(_species: SpeciesBase, parentNode: Node, destTile: Tile) -> AnimalBase:
 	var newAnimal = self.duplicate()
-	self.get_parent().add_child(newAnimal)
-	self.sector.addAnimal(destTile, newAnimal)
+	parentNode.add_child(newAnimal)
 	
 	newAnimal.move(destTile.position)
 	newAnimal.energy = energyLivingCost
+	newAnimal.species = _species
 
+	return newAnimal
+
+func reproduce(destTile: Tile) -> AnimalBase:
+	var newAnimal = createAnimal(species, self, destTile)
+	self.sector.addAnimal(destTile, newAnimal)
 	return newAnimal
 
 func death():

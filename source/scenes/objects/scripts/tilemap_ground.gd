@@ -9,7 +9,7 @@ func _ready():
 	_readySelfReference()
 	_readyTiles()
 
-	GlobalsMap.readyUnocupiedSectors()
+	GlobalsMap.readyUnocupiedTiles()
 
 
 func _readySelfReference() -> void:

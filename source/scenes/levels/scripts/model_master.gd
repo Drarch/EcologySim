@@ -38,11 +38,11 @@ func _processAction(actionName: String):
 			a.call(actionName)
 
 func resetSectors():
-	for s in GlobalsMap.sectors:
-		s.removeAnimals()
+	for t in GlobalsMap.ocupiedTiles:
+		t.removeAnimal()
 
 func regrow() -> void:
-	for t in GlobalsMap.map.tiles.values():
+	for t in GlobalsMap.tiles:
 		t.regrow(plantsRegrowRate)
 
 func statistics():

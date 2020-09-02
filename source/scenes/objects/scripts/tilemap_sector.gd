@@ -47,16 +47,11 @@ func addAnimal(tile: Tile, animal: Node2D) -> bool:
 	if !animal || tile.animal:
 		return false
 
-	tile.animal = animal
+	tile.addAnimal(animal)
 	animals[tile] = animal
-	animal.tile = tile
 	animal.sector = self
 
 	# _moveAnimal(animal, tile.position)
-
-	if !hasFreeTile():
-		GlobalsMap.unocupiedSectors.erase(self)
-		GlobalsMap.ocupiedSectors.append(self)
 
 	return true
 
@@ -64,21 +59,13 @@ func removeAnimal(tile: Tile) -> void:
 	if !animals.has(tile):
 		return
 
-	if !hasFreeTile():
-		GlobalsMap.unocupiedSectors.append(self)
-		GlobalsMap.ocupiedSectors.erase(self)
+	tile.removeAnimal()
 	
-	animals[tile].tile.animal = null
-	animals[tile].tile = null
 	animals[tile].sector = null
 	animals.erase(tile)
 
 
 func removeAnimals() -> void:
-	if !hasFreeTile(): #Because otherwise this sector is unocupied befoer reset.
-		GlobalsMap.unocupiedSectors.append(self)
-		GlobalsMap.ocupiedSectors.erase(self)
-	
 	for t in tiles:
 		t.animal = null
 

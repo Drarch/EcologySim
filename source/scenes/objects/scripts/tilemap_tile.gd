@@ -21,6 +21,24 @@ func _init(map: TileMap, _position: Vector2, var _maxPlants: int = 10):
 
 	_updateView()
 
+func isEmpty() -> bool:
+	return animal == null
+
+
+func addAnimal(_animal: Node2D) -> void:
+	animal = _animal
+	animal.tile = self
+
+	GlobalsMap.unocupiedTiles.erase(self)
+	GlobalsMap.ocupiedTiles.append(self)
+
+func removeAnimal() -> void:
+	animal.tile = null
+	animal = null
+
+	GlobalsMap.unocupiedTiles.append(self)
+	GlobalsMap.ocupiedTiles.erase(self)
+
 
 func regrow(amount: int = 10):
 	plants = plants + amount

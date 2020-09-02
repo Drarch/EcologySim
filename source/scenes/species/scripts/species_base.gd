@@ -2,6 +2,7 @@ extends Node
 class_name SpeciesBase
 
 
+export(NodePath) var animalsPath: NodePath
 export(int, 0, 100) var startingAnimals: int = 1
 export(Vector2) var sectorScale = Vector2.ONE
 var sectors: Dictionary = {}
@@ -13,6 +14,9 @@ onready var _grid: Node2D = $Visuals/Grid
 export(NodePath) var tilemapPath: NodePath
 var tilemap: TileMap
 
+
+export(Color) var gridColor: Color = Color.red
+
 func _ready() -> void:
 	tilemap = get_node(tilemapPath)
 	assert(tilemap is TileMap, "Tilemap Path, must be set to TileMap node")
@@ -20,9 +24,18 @@ func _ready() -> void:
 	_readySectors()
 	_readyGrid()
 
+	_readyAnimals()
+
+
+func _readyAnimals():
+	assert(animal, "Species node must have one Animal node")
+
+	for i in range(startingAnimals):
+		var destTile 
 
 func _readyGrid() -> void:
 	_grid.init(self, tilemap)
+	_grid.gridColor = gridColor
 
 func _readySectors() -> void:
 	var tilemapSize: Vector2 = tilemap.get_used_rect().size
@@ -39,3 +52,13 @@ func _readySectors() -> void:
 			var sX: int = int(x / sectorScale.x)
 			var sY: int = int(y / sectorScale.y)
 			sectors[Vector2(sX, sY)].tiles.append( tilemap.tiles[Vector2(x, y)] )
+
+
+func getSector(_destTile: Tile) -> Sector:
+	var sectorCoordinates: Vector2 = _destTile.position / self.sectorScale
+	sectorCoordinates.x = floor(sectorCoordinates.x)
+	sectorCoordinates.y = floor(sectorCoordinates.y)
+
+	assert(sectors.has(sectorCoordinates), "Sector dose not existsts " + str(sectorCoordinates) + " in " + self.name )
+
+	return sectors[sectorCoordinates]
