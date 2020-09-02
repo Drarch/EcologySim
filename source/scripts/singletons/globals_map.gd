@@ -11,12 +11,16 @@ func _ready() -> void:
 	pass
 
 func readyUnocupiedSectors() -> void:
+	return
+
 	for s in map.sectors.values():
 			sectors.append(s)
 			unocupiedSectors.append(s)
 
 
 func updateSectors():
+	return
+
 	unocupiedSectors.clear()
 	ocupiedSectors.clear()
 

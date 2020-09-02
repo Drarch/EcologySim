@@ -3,6 +3,7 @@ extends Node
 onready var _plot: Node2D = $CanvasLayer/plot
 
 onready var _animals: Node = $Animals
+onready var _species: Node = $Species
 var turn: int = 1
 
 export(int, 0, 10000, 1) var plantsRegrowRate: int = 10
@@ -33,7 +34,8 @@ func _processModelAction(actionName: String):
 
 func _processAction(actionName: String):
 	for a in _animals.get_children():
-		a.call(actionName)
+		if a.has_method(actionName):
+			a.call(actionName)
 
 func resetSectors():
 	for s in GlobalsMap.sectors:
