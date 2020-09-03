@@ -24,14 +24,15 @@ func _ready() -> void:
 	_readySectors()
 	_readyGrid()
 
-	_readyAnimals()
+	readyAnimals()
 
-
-func _readyAnimals():
+func readyAnimals():
 	assert(animal, "Species node must have one Animal node")
 
 	for i in range(startingAnimals):
-		var destTile 
+		var destTile := GlobalsMap.getFreeTile()
+		var newAnimal: Node2D = animal.createAnimal(self, get_node(animalsPath), destTile)
+		newAnimal.visible = true
 
 func _readyGrid() -> void:
 	_grid.init(self, tilemap)

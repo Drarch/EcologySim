@@ -8,11 +8,15 @@ var turn: int = 1
 
 export(int, 0, 10000, 1) var plantsRegrowRate: int = 10
 
-export(Array) var modelActionsOrder: Array = ["regrow", "resetSectors"]
+export(Array) var modelActionsOrder: Array = ["regrow"]
 export(Array) var actionsOrder: Array = ["aging", "migration", "feeding", "breeding"]
 
 func _ready() -> void:
-	_zeroTurn()
+	pass
+
+func resetModel() -> void:
+	for s in _species.get_children():
+		s.readyAnimals()
 
 func _zeroTurn() -> void:
 	_processAction("migration")
@@ -47,3 +51,9 @@ func regrow() -> void:
 
 func statistics():
 	print("Population: ", _animals.get_children().size())
+
+
+func _on_Reset_pressed():
+	resetModel()
+
+	_zeroTurn()

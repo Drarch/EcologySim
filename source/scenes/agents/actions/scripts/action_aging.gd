@@ -11,6 +11,7 @@ func activate(animal: AnimalBase) -> void:
 func action() -> void:
 	if _animal.age >= _animal.maxAge || _animal.energy < _animal.energyLivingCost:
 		_animal.death()
+		
 		return
 
 	_animal.energy -= _animal.energyLivingCost

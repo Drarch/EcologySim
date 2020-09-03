@@ -11,16 +11,12 @@ func _ready() -> void:
 	pass
 
 func readyUnocupiedTiles() -> void:
-	return
-
 	for t in map.tiles.values():
 		tiles.append(t)
 		unocupiedTiles.append(t)
 
 
 func updateTiles():
-	return
-
 	unocupiedTiles.clear()
 	ocupiedTiles.clear()
 
@@ -34,3 +30,10 @@ func updateTiles():
 
 func map_to_world(tile: Vector2) -> Vector2:
 	return map.map_to_world(tile)
+
+
+func getFreeTile() -> Tile:
+	if unocupiedTiles.empty():
+		return null
+
+	return unocupiedTiles[randi() % unocupiedTiles.size()]

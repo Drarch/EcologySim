@@ -73,13 +73,19 @@ func createAnimal(_species: SpeciesBase, parentNode: Node, destTile: Tile) -> An
 	newAnimal.energy = energyLivingCost
 	newAnimal.species = _species
 
+	_species.getSector(destTile).addAnimal(destTile, newAnimal)
+
 	return newAnimal
 
 func reproduce(destTile: Tile) -> AnimalBase:
-	var newAnimal = createAnimal(species, self, destTile)
-	self.sector.addAnimal(destTile, newAnimal)
+	var newAnimal = createAnimal(species, self.get_parent(), destTile)
+	# self.sector.addAnimal(destTile, newAnimal)
 	return newAnimal
 
 func death():
 	self.sector.removeAnimal(self.tile)
+
+	self.get_parent().remove_child(self)
+
+	self.visible = false
 	self.queue_free()

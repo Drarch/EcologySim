@@ -33,8 +33,9 @@ func addAnimal(_animal: Node2D) -> void:
 	GlobalsMap.ocupiedTiles.append(self)
 
 func removeAnimal() -> void:
-	animal.tile = null
-	animal = null
+	if animal:
+		animal.tile = null
+		animal = null
 
 	GlobalsMap.unocupiedTiles.append(self)
 	GlobalsMap.ocupiedTiles.erase(self)
