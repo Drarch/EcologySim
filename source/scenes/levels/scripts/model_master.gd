@@ -38,7 +38,7 @@ func _processModelAction(actionName: String):
 
 func _processAction(actionName: String):
 	for a in _animals.get_children():
-		if a.has_method(actionName):
+		if a.isAlive && a.has_method(actionName):
 			a.call(actionName)
 
 func resetSectors():

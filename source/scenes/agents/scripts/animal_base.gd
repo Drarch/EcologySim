@@ -23,6 +23,8 @@ export(int, 0, 10000) var energyBreedingCost: int = 10
 export(int, 0, 10000) var energyFeedingGain: int = 10
 export(int, 0, 10000) var energyLivingCost: int = 0
 
+var isAlive: bool = true
+
 func _ready() -> void:
 	_readyEmptyActions("_actionDebug")
 	_readyActions()
@@ -72,6 +74,7 @@ func createAnimal(_species: SpeciesBase, parentNode: Node, destTile: Tile) -> An
 	newAnimal.move(destTile.position)
 	newAnimal.energy = energyLivingCost
 	newAnimal.species = _species
+	newAnimal.name = specieName
 
 	_species.getSector(destTile).addAnimal(destTile, newAnimal)
 
@@ -83,6 +86,8 @@ func reproduce(destTile: Tile) -> AnimalBase:
 	return newAnimal
 
 func death():
+	self.isAlive = false
+
 	self.sector.removeAnimal(self.tile)
 
 	self.get_parent().remove_child(self)

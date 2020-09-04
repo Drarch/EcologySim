@@ -10,7 +10,6 @@ var animals: Dictionary
 func _init(_position: Vector2):
 	position = _position
 
-
 func hasFreeTile() -> bool:
 	var result: bool = false
 
@@ -19,8 +18,17 @@ func hasFreeTile() -> bool:
 			result = true
 			break
 
-	return result
+	return result	
+
+
+func getAnimals() -> Array:
+	var result: Array = []
 	
+	for t in tiles:
+		if t.animal:
+			result.append(t.animal)
+
+	return result
 
 func getFreeTile() -> Tile:
 	if !hasFreeTile():
@@ -47,6 +55,16 @@ func getFreePlantTile() -> Tile:
 			break
 
 	return result 
+
+func getPrey(predatorSpecies: String) -> Node2D: #AnimalBase
+	var result: Node2D = null
+
+	for t in tiles:
+		if t.animal && t.animal.specieName != predatorSpecies:
+			result = t.animal
+			break
+
+	return result
 
 
 # Adds animal to sector and move it to designated tile
