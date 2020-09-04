@@ -9,13 +9,26 @@ func activate(animal: AnimalBase) -> void:
 	
 
 func action() -> void:
-	var destTile: Tile = GlobalsMap.getFreeTile()
+	var sectors: Array = _animal.species.unocupiedSectors
 
-	if GlobalsMap.unocupiedTiles.empty():
+	if sectors.empty():
 		return
 	
-	var destSector: Sector = _animal.species.getSector(destTile) as Sector
-	
+	var destSector: Sector = sectors[randi() % sectors.size()] as Sector
+	var destTile: Tile = destSector.getFreeTile()
+
 	_animal.sector.removeAnimal(_animal.tile)
 	destSector.addAnimal(destTile, _animal)
 	_animal.move(destTile.position)
+
+
+	# var destTile: Tile = GlobalsMap.getFreeTile()
+
+	# if GlobalsMap.unocupiedTiles.empty():
+	# 	return
+	
+	# var destSector: Sector = _animal.species.getSector(destTile) as Sector
+	
+	# _animal.sector.removeAnimal(_animal.tile)
+	# destSector.addAnimal(destTile, _animal)
+	# _animal.move(destTile.position)

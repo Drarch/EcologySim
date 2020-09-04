@@ -12,8 +12,15 @@ func _init(_position: Vector2):
 
 
 func hasFreeTile() -> bool:
-	return animals.size() < tiles.size()
+	var result: bool = false
 
+	for t in tiles:
+		if t.isEmpty():
+			result = true
+			break
+
+	return result
+	
 
 func getFreeTile() -> Tile:
 	if !hasFreeTile():
@@ -35,7 +42,7 @@ func getFreePlantTile() -> Tile:
 	var result:Tile = getFreeTile()
 
 	for t in tiles:
-		if !t.animal && t.plants > 0:
+		if t.hasFreePlant():
 			result = t
 			break
 

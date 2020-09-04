@@ -14,8 +14,11 @@ onready var _grid: Node2D = $Visuals/Grid
 export(NodePath) var tilemapPath: NodePath
 var tilemap: TileMap
 
-
 export(Color) var gridColor: Color = Color.red
+
+var unocupiedSectors: Array = [] setget ,_getFreeSectors
+# var ocupiedSectors: Array = []
+
 
 func _ready() -> void:
 	tilemap = get_node(tilemapPath)
@@ -63,3 +66,13 @@ func getSector(_destTile: Tile) -> Sector:
 	assert(sectors.has(sectorCoordinates), "Sector dose not existsts " + str(sectorCoordinates) + " in " + self.name )
 
 	return sectors[sectorCoordinates]
+
+
+func _getFreeSectors() -> Array:
+	var result: Array = []
+
+	for s in sectors.values():
+		if s.hasFreeTile():
+			result.append(s)
+
+	return result

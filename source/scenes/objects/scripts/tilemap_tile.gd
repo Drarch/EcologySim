@@ -24,6 +24,11 @@ func _init(map: TileMap, _position: Vector2, var _maxPlants: int = 10):
 func isEmpty() -> bool:
 	return animal == null
 
+func hasPlant() -> bool:
+	return plants > 0
+
+func hasFreePlant() -> bool:
+	return isEmpty() && hasPlant()
 
 func addAnimal(_animal: Node2D) -> void:
 	animal = _animal
