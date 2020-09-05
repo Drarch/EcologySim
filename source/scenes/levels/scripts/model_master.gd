@@ -14,6 +14,8 @@ export(Array) var modelActionsOrder: Array = ["regrow"]
 export(Array) var actionsOrder: Array = ["aging", "migration", "feeding", "breeding"]
 
 func _ready() -> void:
+	OS.set_window_maximized(true)
+
 	if randomizeSeed:
 		randomize()
 	pass

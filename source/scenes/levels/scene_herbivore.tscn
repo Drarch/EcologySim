@@ -79,17 +79,16 @@ __meta__ = {
 visible = false
 margin_right = 80.0
 margin_bottom = 30.0
-rect_min_size = Vector2( 80, 30 )
+rect_min_size = Vector2( 160, 60 )
 text = "Reset"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Turn" type="Button" parent="CanvasLayer/HBoxContainer"]
-margin_left = 27.0
-margin_right = 107.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 80, 30 )
+margin_right = 160.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 160, 60 )
 text = "Turn"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -106,11 +105,11 @@ __meta__ = {
 
 [node name="plot" parent="CanvasLayer/Control" instance=ExtResource( 4 )]
 position = Vector2( 0, 250 )
-scale = Vector2( 1, 4 )
+scale = Vector2( 1, 1.5 )
 data_path = NodePath("../../../Animals")
 history_size = 200
 record_only_on_change = true
-plot_size = Vector2( 400, 60 )
+plot_size = Vector2( 400, 150 )
 axis_line_width = 2
 grid_divisions = Vector2( 10, 5 )
 grid_color = Color( 1, 1, 1, 0.286275 )
