@@ -14,6 +14,10 @@ onready var _grid: Node2D = $Visuals/Grid
 export(NodePath) var tilemapPath: NodePath
 var tilemap: TileMap
 
+
+export(bool) var drawSectorGrid: bool = true
+export(bool) var drawTileGrid: bool = false
+export(bool) var drawFrame: bool = true
 export(Color) var gridColor: Color = Color.red
 
 var unocupiedSectors: Array = [] setget ,_getFreeSectors
@@ -39,6 +43,9 @@ func readyAnimals():
 
 func _readyGrid() -> void:
 	_grid.init(self, tilemap)
+	_grid.drawSectorGrid = drawSectorGrid
+	_grid.drawTileGrid = drawTileGrid
+	_grid.drawFrame = drawFrame
 	_grid.gridColor = gridColor
 
 func _readySectors() -> void:
