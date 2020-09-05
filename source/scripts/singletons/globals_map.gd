@@ -39,3 +39,12 @@ func getFreeTile() -> Tile:
 		return null
 
 	return unocupiedTiles[randi() % unocupiedTiles.size()]
+
+
+func countPlantMass() -> int:
+	var result: int = 0
+
+	for t in tiles:
+		result += t.plants
+
+	return result

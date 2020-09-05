@@ -20,6 +20,9 @@ func resetTurnStatistics():
 	for s in turnStatistics:
 		population[s] = 0
 
+func registerPlantmass(mass: int):
+	population["PlantMass"] = mass
+
 func registerSpecie(specieName: String) -> void:
 	population[specieName] = 0
 	population[specieName + "Born"] = 0

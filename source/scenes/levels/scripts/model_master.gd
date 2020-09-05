@@ -70,6 +70,7 @@ func regrow() -> void:
 func statistics():
 	print("Turn: ", turn, ", Population: ", _animals.get_children().size())
 
+	_statistics.registerPlantmass(GlobalsMap.countPlantMass())
 	_statistics.snapshootPopulation(turn)
 	_plot.force_update_data()
 

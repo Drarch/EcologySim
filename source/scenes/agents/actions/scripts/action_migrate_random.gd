@@ -20,15 +20,3 @@ func action() -> void:
 	_animal.sector.removeAnimal(_animal.tile)
 	destSector.addAnimal(destTile, _animal)
 	_animal.move(destTile.position)
-
-
-	# var destTile: Tile = GlobalsMap.getFreeTile()
-
-	# if GlobalsMap.unocupiedTiles.empty():
-	# 	return
-	
-	# var destSector: Sector = _animal.species.getSector(destTile) as Sector
-	
-	# _animal.sector.removeAnimal(_animal.tile)
-	# destSector.addAnimal(destTile, _animal)
-	# _animal.move(destTile.position)
