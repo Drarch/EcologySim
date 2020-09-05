@@ -11,6 +11,7 @@ var turn: int = 0
 export(bool) var randomizeSeed: bool = false
 
 export(int, 0, 10000, 1) var plantsRegrowRate: int = 10
+export(int, 0, 10000, 1) var maxAutoTurn: int = 100
 
 export(Array) var modelActionsOrder: Array = ["regrow"]
 export(Array) var actionsOrder: Array = ["aging", "migration", "feeding", "breeding"]
@@ -84,4 +85,11 @@ func _on_Reset_pressed():
 func _processTimer():
 	processTurn()
 
+	if _statistics.population["Owl"] <= 0:
+		_timer.stop()
+		_statistics.generateCSV()
+
+	if turn >= maxAutoTurn:
+		_timer.stop()
+		_statistics.generateCSV()
 		

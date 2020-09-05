@@ -50,3 +50,34 @@ func registerHunted(predator: String, prey: String) -> void:
 
 func snapshootPopulation(turn: int) -> void:
 	populationTurn[turn] = population.duplicate()
+
+
+func generateCSV() -> void:
+	var file = File.new()
+	file.open("user://model_data.csv", File.WRITE)
+	# file.store_string(content)
+
+
+	var message: String = "turn"
+	var keys: Array = []
+
+	for t in population.keys():
+		message += "," + str(t)
+		keys.append(t)
+
+	message += "\n"
+	file.store_string(message)
+
+	for k in populationTurn.keys():
+		message = ""
+		message += str(k) # turn
+		for v in keys:
+			message += ","
+			if populationTurn[k].has(v):
+				message += str(populationTurn[k][v]) 
+			else:
+				message += "0"
+		message += "\n"
+		file.store_string(message)
+
+	file.close()

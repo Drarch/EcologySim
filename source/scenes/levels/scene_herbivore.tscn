@@ -12,6 +12,7 @@
 process_priority = -1
 script = ExtResource( 3 )
 plantsRegrowRate = 3
+maxAutoTurn = 3000
 
 [node name="TileMap" parent="." instance=ExtResource( 1 )]
 modulate = Color( 0.898039, 0.815686, 0.733333, 1 )
@@ -25,34 +26,37 @@ script = ExtResource( 5 )
 
 [node name="Predator" parent="Species" instance=ExtResource( 6 )]
 animalsPath = NodePath("../../Animals")
+startingAnimals = 1
 sectorScale = Vector2( 2, 2 )
 drawSectorGrid = false
 drawTileGrid = true
+drawFrame = true
 gridColor = Color( 0.65098, 0.286275, 0, 1 )
 
 [node name="Animal" parent="Species/Predator" instance=ExtResource( 8 )]
 visible = false
 specieName = "Owl"
 maxAge = 6
+energy = 0
 energyBreedingCost = 15
 energyFeedingGain = 6
+energyLivingCost = 0
 
 [node name="Herbivore" parent="Species" instance=ExtResource( 6 )]
 animalsPath = NodePath("../../Animals")
 startingAnimals = 4
 sectorScale = Vector2( 1, 2 )
 drawSectorGrid = false
+drawTileGrid = false
 drawFrame = false
 gridColor = Color( 0.796078, 0.556863, 0.368627, 1 )
 
 [node name="Animal" parent="Species/Herbivore" instance=ExtResource( 2 )]
 visible = false
-maxAge = 4
-energyFeedingGain = 5
 specieName = "Rabbit"
-energy = null
+maxAge = 4
 energyBreedingCost = 5
-energyLivingCost = null
+energyFeedingGain = 5
 
 [node name="Animals" type="Node" parent="."]
 
@@ -117,7 +121,8 @@ plot_line_width = 2
 plot_line_color = Color( 0.968627, 1, 0, 1 )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.1
+autostart = true
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/Reset" to="." method="_on_Reset_pressed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/Turn" to="." method="processTurn"]
 [connection signal="timeout" from="Timer" to="." method="_processTimer"]

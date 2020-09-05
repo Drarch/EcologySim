@@ -39,8 +39,8 @@ func readyAnimals():
 	if startingAnimals > 0:
 		GlobalsMap.statistics.registerSpecie(animal.specieName)
 
-	for i in range(startingAnimals):
-		var destTile := GlobalsMap.getFreeTile()
+	for _i in range(startingAnimals):
+		var destTile : Tile = GlobalsMap.getFreeTile()
 		var newAnimal: Node2D = animal.createAnimal(self, get_node(animalsPath), destTile)
 		newAnimal.visible = true
 
