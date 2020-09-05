@@ -31,10 +31,13 @@ func _ready() -> void:
 	_readySectors()
 	_readyGrid()
 
-	readyAnimals()
+	# readyAnimals()
 
 func readyAnimals():
 	assert(animal, "Species node must have one Animal node")
+
+	if startingAnimals > 0:
+		GlobalsMap.statistics.registerSpecie(animal.specieName)
 
 	for i in range(startingAnimals):
 		var destTile := GlobalsMap.getFreeTile()

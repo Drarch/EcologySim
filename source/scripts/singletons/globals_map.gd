@@ -2,6 +2,8 @@ extends Node
 
 var map: MapBase
 
+var statistics: Statistics
+
 var tiles: Array = []
 var unocupiedTiles: Array = []
 var ocupiedTiles: Array = []

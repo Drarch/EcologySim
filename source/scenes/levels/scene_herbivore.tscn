@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/agents/animal_predator.tscn" type="PackedScene" id=8]
 
 [node name="ModelMaster" type="Node"]
+process_priority = -1
 script = ExtResource( 3 )
 plantsRegrowRate = 3
 
@@ -46,10 +47,12 @@ gridColor = Color( 0.796078, 0.556863, 0.368627, 1 )
 
 [node name="Animal" parent="Species/Herbivore" instance=ExtResource( 2 )]
 visible = false
-specieName = "Rabbit"
 maxAge = 4
-energyBreedingCost = 5
 energyFeedingGain = 5
+specieName = "Rabbit"
+energy = null
+energyBreedingCost = 5
+energyLivingCost = null
 
 [node name="Animals" type="Node" parent="."]
 
@@ -102,17 +105,19 @@ position = Vector2( 0, 250 )
 scale = Vector2( 1, 1.5 )
 data_path = NodePath("../../../Animals")
 history_size = 390
+scale_data = false
 record_only_on_change = true
 plot_size = Vector2( 400, 150 )
 axis_line_width = 2
+axis_line_color = Color( 1, 1, 1, 1 )
 grid_divisions = Vector2( 10, 5 )
+grid_width = 1
 grid_color = Color( 1, 1, 1, 0.286275 )
 plot_line_width = 2
 plot_line_color = Color( 0.968627, 1, 0, 1 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
-autostart = true
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/Reset" to="." method="_on_Reset_pressed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/Turn" to="." method="processTurn"]
 [connection signal="timeout" from="Timer" to="." method="_processTimer"]

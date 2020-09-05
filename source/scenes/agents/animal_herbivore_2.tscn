@@ -8,8 +8,12 @@
 [ext_resource path="res://assets/animals/horse.png" type="Texture" id=6]
 
 [node name="Herbivore" instance=ExtResource( 1 )]
+specieName = null
 maxAge = 30
+energy = null
+energyBreedingCost = null
 energyFeedingGain = 1
+energyLivingCost = null
 
 [node name="View" parent="." index="0"]
 texture = ExtResource( 6 )

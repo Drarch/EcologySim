@@ -6,7 +6,14 @@
 
 [node name="Herbivore" type="Node"]
 script = ExtResource( 2 )
+animalsPath = null
+startingAnimals = null
+sectorScale = null
 tilemapPath = NodePath("../../TileMap")
+drawSectorGrid = null
+drawTileGrid = null
+drawFrame = null
+gridColor = null
 
 [node name="Visuals" type="Node" parent="."]
 

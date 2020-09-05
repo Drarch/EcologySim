@@ -10,7 +10,10 @@
 [node name="Predator" instance=ExtResource( 1 )]
 specieName = "Predator"
 maxAge = 30
+energy = null
+energyBreedingCost = null
 energyFeedingGain = 1
+energyLivingCost = null
 
 [node name="View" parent="." index="0"]
 texture = ExtResource( 5 )

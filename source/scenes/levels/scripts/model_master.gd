@@ -1,11 +1,12 @@
 extends Node
 
 onready var _timer: Timer = $Timer
+onready var _statistics: Statistics = $Statistics
 onready var _plot: Node2D = $CanvasLayer/Control/plot
 
 onready var _animals: Node = $Animals
 onready var _species: Node = $Species
-var turn: int = 1
+var turn: int = 0
 
 export(bool) var randomizeSeed: bool = false
 
@@ -17,13 +18,22 @@ export(Array) var actionsOrder: Array = ["aging", "migration", "feeding", "breed
 func _ready() -> void:
 	OS.set_window_maximized(true)
 
+	GlobalsMap.statistics = _statistics
+	resetModel()
+
 	if randomizeSeed:
 		randomize()
 	pass
 
 func resetModel() -> void:
+	_statistics.reset()
+
 	for s in _species.get_children():
 		s.readyAnimals()
+	
+	turn = 0
+	statistics()
+
 
 func _zeroTurn() -> void:
 	_processAction("migration")
@@ -35,10 +45,10 @@ func processTurn() -> void:
 	for a in actionsOrder:
 		_processAction(a)
 
+	turn += 1
+		
 	statistics()
 
-	turn += 1
-	_plot.force_update_data()
 
 func _processModelAction(actionName: String):
 	self.call(actionName)
@@ -58,6 +68,11 @@ func regrow() -> void:
 
 func statistics():
 	print("Turn: ", turn, ", Population: ", _animals.get_children().size())
+
+	_statistics.snapshootPopulation(turn)
+	_plot.force_update_data()
+
+	_statistics.resetTurnStatistics()
 
 
 func _on_Reset_pressed():

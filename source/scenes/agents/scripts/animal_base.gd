@@ -78,6 +78,8 @@ func createAnimal(_species: SpeciesBase, parentNode: Node, destTile: Tile) -> An
 
 	_species.getSector(destTile).addAnimal(destTile, newAnimal)
 
+	GlobalsMap.statistics.addPopulation(self.specieName)
+
 	return newAnimal
 
 func reproduce(destTile: Tile) -> AnimalBase:
@@ -86,6 +88,8 @@ func reproduce(destTile: Tile) -> AnimalBase:
 	return newAnimal
 
 func death():
+	GlobalsMap.statistics.removePopulation(self.specieName)
+
 	self.isAlive = false
 
 	self.sector.removeAnimal(self.tile)

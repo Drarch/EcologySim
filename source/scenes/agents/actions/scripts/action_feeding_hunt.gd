@@ -14,5 +14,8 @@ func action() -> void:
 	if !prey:
 		return
 
+	GlobalsMap.statistics.registerHunted(_animal.specieName, prey.specieName)
+	
 	prey.death()
 	_animal.energy += _animal.energyFeedingGain
+
