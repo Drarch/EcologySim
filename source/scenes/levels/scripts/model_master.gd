@@ -12,6 +12,7 @@ export(Array) var modelActionsOrder: Array = ["regrow"]
 export(Array) var actionsOrder: Array = ["aging", "migration", "feeding", "breeding"]
 
 func _ready() -> void:
+	# randomize()
 	pass
 
 func resetModel() -> void:
