@@ -33,6 +33,8 @@ func _ready():
 		data_handle = get_node(data_path)
 
 func _process(delta):
+	return
+
 	if !Engine.is_editor_hint():
 		value_current = data_handle.get_child_count()
 		if record_only_on_change:

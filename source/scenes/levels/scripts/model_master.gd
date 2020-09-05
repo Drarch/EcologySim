@@ -6,13 +6,16 @@ onready var _animals: Node = $Animals
 onready var _species: Node = $Species
 var turn: int = 1
 
+export(bool) var randomizeSeed: bool = false
+
 export(int, 0, 10000, 1) var plantsRegrowRate: int = 10
 
 export(Array) var modelActionsOrder: Array = ["regrow"]
 export(Array) var actionsOrder: Array = ["aging", "migration", "feeding", "breeding"]
 
 func _ready() -> void:
-	# randomize()
+	if randomizeSeed:
+		randomize()
 	pass
 
 func resetModel() -> void:
@@ -32,7 +35,7 @@ func processTurn() -> void:
 	statistics()
 
 	turn += 1
-	_plot.force_update_data()
+	# _plot.force_update_data()
 
 func _processModelAction(actionName: String):
 	self.call(actionName)
