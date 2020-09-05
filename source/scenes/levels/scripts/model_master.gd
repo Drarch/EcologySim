@@ -1,6 +1,7 @@
 extends Node
 
-onready var _plot: Node2D = $CanvasLayer/plot
+onready var _timer: Timer = $Timer
+onready var _plot: Node2D = $CanvasLayer/Control/plot
 
 onready var _animals: Node = $Animals
 onready var _species: Node = $Species
@@ -37,7 +38,7 @@ func processTurn() -> void:
 	statistics()
 
 	turn += 1
-	# _plot.force_update_data()
+	_plot.force_update_data()
 
 func _processModelAction(actionName: String):
 	self.call(actionName)
@@ -63,3 +64,9 @@ func _on_Reset_pressed():
 	resetModel()
 
 	_zeroTurn()
+
+
+func _processTimer():
+	processTurn()
+
+		
