@@ -14,6 +14,5 @@ func action() -> void:
 	if !prey:
 		return
 
-	print("Hunted: ", prey.name)
 	prey.death()
 	_animal.energy += _animal.energyFeedingGain

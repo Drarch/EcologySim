@@ -13,8 +13,8 @@
 script = ExtResource( 3 )
 
 [node name="TileMap" parent="." instance=ExtResource( 1 )]
-position = Vector2( 117.468, 91.2756 )
-tile_data = PoolIntArray( 0, 2, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 65536, 1, 0, 65537, 2, 0, 65538, 1, 0, 65539, 1, 0, 65540, 1, 0, 65541, 1, 0, 131072, 1, 0, 131073, 1, 0, 131074, 2, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 196608, 1, 0, 196609, 1, 0, 196610, 1, 0, 196611, 2, 0, 196612, 1, 0, 196613, 1, 0, 262144, 1, 0, 262145, 1, 0, 262146, 1, 0, 262147, 1, 0, 262148, 2, 0, 262149, 1, 0, 327680, 1, 0, 327681, 1, 0, 327682, 1, 0, 327683, 1, 0, 327684, 1, 0, 327685, 2, 0 )
+position = Vector2( 20.9363, 21.683 )
+tile_data = PoolIntArray( 0, 2, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 65536, 1, 0, 65537, 2, 0, 65538, 1, 0, 65539, 1, 0, 65540, 1, 0, 65541, 1, 0, 65542, 1, 0, 65543, 1, 0, 131072, 1, 0, 131073, 1, 0, 131074, 2, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 131078, 1, 0, 131079, 1, 0, 196608, 1, 0, 196609, 1, 0, 196610, 1, 0, 196611, 2, 0, 196612, 1, 0, 196613, 1, 0, 196614, 1, 0, 196615, 1, 0, 262144, 1, 0, 262145, 1, 0, 262146, 1, 0, 262147, 1, 0, 262148, 2, 0, 262149, 1, 0, 262150, 1, 0, 262151, 1, 0, 327680, 1, 0, 327681, 1, 0, 327682, 1, 0, 327683, 1, 0, 327684, 1, 0, 327685, 2, 0, 327686, 1, 0, 327687, 1, 0, 393216, 1, 0, 393217, 1, 0, 393218, 1, 0, 393219, 1, 0, 393220, 1, 0, 393221, 1, 0, 393222, 1, 0, 393223, 1, 0, 458752, 1, 0, 458753, 1, 0, 458754, 1, 0, 458755, 1, 0, 458756, 1, 0, 458757, 1, 0, 458758, 1, 0, 458759, 1, 0 )
 
 [node name="Statistics" type="Node" parent="."]
 script = ExtResource( 5 )
@@ -28,7 +28,8 @@ gridColor = Color( 0.65098, 0.286275, 0, 1 )
 
 [node name="Animal" parent="Species/Predator" instance=ExtResource( 8 )]
 visible = false
-maxAge = 10
+maxAge = 6
+energyBreedingCost = 15
 energyFeedingGain = 6
 
 [node name="Herbivore" parent="Species" instance=ExtResource( 6 )]
@@ -40,7 +41,7 @@ gridColor = Color( 0.796078, 0.556863, 0.368627, 1 )
 [node name="Animal" parent="Species/Herbivore" instance=ExtResource( 2 )]
 visible = false
 specieName = "Goat"
-maxAge = 10
+maxAge = 3
 energyFeedingGain = 10
 
 [node name="Herbivore2" parent="Species" instance=ExtResource( 6 )]
@@ -60,13 +61,13 @@ energyFeedingGain = 3
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="plot" parent="CanvasLayer" instance=ExtResource( 4 )]
-position = Vector2( 813.922, 210.937 )
+position = Vector2( 608.511, 258.08 )
 scale = Vector2( 1, 4 )
 data_path = NodePath("../../../ModelMaster/Animals")
 history_size = 200
 scale_data = false
 record_only_on_change = true
-plot_size = Vector2( 200, 50 )
+plot_size = Vector2( 400, 60 )
 axis_line_width = 2
 axis_line_color = Color( 1, 1, 1, 1 )
 grid_divisions = Vector2( 10, 5 )

@@ -50,7 +50,7 @@ func regrow() -> void:
 		t.regrow(plantsRegrowRate)
 
 func statistics():
-	print("Population: ", _animals.get_children().size())
+	print("Turn: ", turn, ", Population: ", _animals.get_children().size())
 
 
 func _on_Reset_pressed():
