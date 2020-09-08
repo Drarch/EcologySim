@@ -11,8 +11,8 @@
 [node name="ModelMaster" type="Node"]
 process_priority = -1
 script = ExtResource( 3 )
-plantsRegrowRate = 3
-maxAutoTurn = 3000
+randomizeSeed = true
+maxAutoTurn = 600
 
 [node name="TileMap" parent="." instance=ExtResource( 1 )]
 modulate = Color( 0.898039, 0.815686, 0.733333, 1 )
@@ -26,11 +26,9 @@ script = ExtResource( 5 )
 
 [node name="Predator" parent="Species" instance=ExtResource( 6 )]
 animalsPath = NodePath("../../Animals")
-startingAnimals = 1
 sectorScale = Vector2( 2, 2 )
 drawSectorGrid = false
 drawTileGrid = true
-drawFrame = true
 gridColor = Color( 0.65098, 0.286275, 0, 1 )
 
 [node name="Animal" parent="Species/Predator" instance=ExtResource( 8 )]
@@ -39,15 +37,14 @@ specieName = "Owl"
 maxAge = 6
 energy = 0
 energyBreedingCost = 15
-energyFeedingGain = 6
+energyFeedingGain = 5
 energyLivingCost = 0
 
 [node name="Herbivore" parent="Species" instance=ExtResource( 6 )]
 animalsPath = NodePath("../../Animals")
-startingAnimals = 4
+startingAnimals = 10
 sectorScale = Vector2( 1, 2 )
 drawSectorGrid = false
-drawTileGrid = false
 drawFrame = false
 gridColor = Color( 0.796078, 0.556863, 0.368627, 1 )
 

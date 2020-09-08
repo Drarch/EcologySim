@@ -65,7 +65,7 @@ func generateCSV() -> void:
 	var keys: Array = []
 
 	for t in population.keys():
-		message += "," + str(t)
+		message += ";" + str(t)
 		keys.append(t)
 
 	message += "\n"
@@ -75,7 +75,7 @@ func generateCSV() -> void:
 		message = ""
 		message += str(k) # turn
 		for v in keys:
-			message += ","
+			message += ";"
 			if populationTurn[k].has(v):
 				message += str(populationTurn[k][v]) 
 			else:
