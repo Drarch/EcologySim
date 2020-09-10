@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/objects/ground_tilemap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/agents/animal_herbivore.tscn" type="PackedScene" id=2]
@@ -6,14 +6,11 @@
 [ext_resource path="res://plot.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/levels/scripts/statistics.gd" type="Script" id=5]
 [ext_resource path="res://scenes/species/species_base.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/animals/hippo.png" type="Texture" id=7]
-[ext_resource path="res://scenes/agents/animal_predator.tscn" type="PackedScene" id=8]
 
 [node name="ModelMaster" type="Node"]
 process_priority = -1
 script = ExtResource( 3 )
-randomizeSeed = true
-maxAutoTurn = 600
+maxAutoTurn = 200
 
 [node name="TileMap" parent="." instance=ExtResource( 1 )]
 modulate = Color( 0.898039, 0.815686, 0.733333, 1 )
@@ -24,23 +21,6 @@ tile_data = PoolIntArray( 0, 2, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 
 script = ExtResource( 5 )
 
 [node name="Species" type="Node" parent="."]
-
-[node name="Predator" parent="Species" instance=ExtResource( 6 )]
-animalsPath = NodePath("../../Animals")
-sectorScale = Vector2( 2, 2 )
-drawSectorGrid = false
-drawTileGrid = true
-gridColor = Color( 0.65098, 0.286275, 0, 1 )
-
-[node name="Animal" parent="Species/Predator" instance=ExtResource( 8 )]
-visible = false
-specieName = "Owl"
-specieView = ExtResource( 7 )
-maxAge = 6
-energy = 0
-energyBreedingCost = 15
-energyFeedingGain = 5
-energyLivingCost = 0
 
 [node name="Herbivore" parent="Species" instance=ExtResource( 6 )]
 animalsPath = NodePath("../../Animals")
@@ -53,9 +33,8 @@ gridColor = Color( 0.796078, 0.556863, 0.368627, 1 )
 [node name="Animal" parent="Species/Herbivore" instance=ExtResource( 2 )]
 visible = false
 specieName = "Rabbit"
-maxAge = 4
-energyBreedingCost = 5
-energyFeedingGain = 5
+maxAge = 200
+energyBreedingCost = 20
 
 [node name="Animals" type="Node" parent="."]
 

@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/animals/rabbit.png" type="Texture" id=6]
 
 [node name="Herbivore" instance=ExtResource( 1 )]
+specieView = ExtResource( 6 )
 maxAge = 30
 energyFeedingGain = 1
 

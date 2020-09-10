@@ -12,6 +12,7 @@ var tile: Tile
 var sector: Sector
 
 export(String) var specieName : String = "Speciement" 
+export(StreamTexture) var specieView: StreamTexture
 var species: SpeciesBase
 
 export(int, 1, 2000, 1) var maxAge:int = 3
@@ -26,6 +27,8 @@ export(int, 0, 10000) var energyLivingCost: int = 0
 var isAlive: bool = true
 
 func _ready() -> void:
+	$View.texture = specieView
+
 	_readyEmptyActions("_actionDebug")
 	_readyActions()
 
