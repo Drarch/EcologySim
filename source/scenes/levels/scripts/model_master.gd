@@ -1,6 +1,6 @@
 extends Node
 
-onready var _timer: Timer = $Timer
+onready var _timer: Timer = $CycleTimer
 onready var _statistics: Statistics = $Statistics
 onready var _plot: Node2D = $CanvasLayer/Control/plot
 
@@ -53,7 +53,8 @@ func processTurn() -> void:
 
 
 func _processModelAction(actionName: String):
-	self.call(actionName)
+	if self.has_method(actionName):
+		self.call(actionName)
 
 func _processAction(actionName: String):
 	for a in _animals.get_children():
